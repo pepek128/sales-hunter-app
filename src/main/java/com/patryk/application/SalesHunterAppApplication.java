@@ -15,5 +15,8 @@ public class SalesHunterAppApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SalesHunterAppApplication.class, args);
 	}
-	
+	public void run(String... arg) throws Exception {
+		storageService.deleteAll();
+		storageService.init();
+	}
 }
