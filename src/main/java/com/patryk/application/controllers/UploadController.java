@@ -37,8 +37,8 @@ public class UploadController {
 	
 	
 
-	@PostMapping("/uploadFile")
-	public ResponseEntity<String> handleFileUpload(@RequestParam("image") MultipartFile image) {
+	@PostMapping("/uploadfile")
+	public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile image) {
 		String message = "";
 		try {
 			storageService.store(image);

@@ -18,7 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class StorageService {
  
 	Logger log = LoggerFactory.getLogger(this.getClass().getName());
-	private final Path rootLocation = Paths.get("C:\\Users\\pepek128\\Documents\\GitHub\\sales-hunter-app\\src\\images");
+	private final Path rootLocation = Paths.get("C:\\Users\\pepek128\\Documents\\GitHub\\sales-hunter-front\\src\\assets\\images");
  
 	public void store(MultipartFile file) {
 		try {

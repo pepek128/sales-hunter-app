@@ -25,6 +25,7 @@ public class Deal {
 	private String name;
 	@NotNull
 	private String price;
+	private String image;
 	@Transient
 	public int categoryID;
 
@@ -96,11 +97,20 @@ public class Deal {
 		this.score = score;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public Deal() {
 
 	}
+	
 
-	public Deal(String link, String description, String name, String price, int score, Category category) {
+	public Deal(String link, String description, String name, String price, int score,String image, Category category) {
 
 		this.link = link;
 		this.description = description;
@@ -108,6 +118,7 @@ public class Deal {
 		this.price = price;
 		this.score = score;
 		this.category=category;
+		this.image=image;
 
 	}
 
