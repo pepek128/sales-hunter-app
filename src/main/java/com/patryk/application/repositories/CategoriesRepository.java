@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.patryk.application.models.Category;
 
-@CrossOrigin(origins = "http://localhost:4200")
 @Repository
 public interface CategoriesRepository extends JpaRepository<Category, Integer> {
 

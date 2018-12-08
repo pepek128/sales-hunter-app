@@ -15,7 +15,6 @@ public class CategoryService {
 	@Autowired
 	private CategoriesRepository categoriesRepository;
 
-	@CrossOrigin(origins = "http://localhost:4200")
 	public List<Category> getAllCategories() {
 
 		List<Category> categories = new ArrayList<>();

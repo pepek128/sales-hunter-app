@@ -29,6 +29,10 @@ public class Deal {
 	@Transient
 	public int categoryID;
 
+	public void setCategoryID(int categoryID) {
+		this.categoryID = categoryID;
+	}
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "categoryID")
 	private Category category;
@@ -40,8 +44,6 @@ public class Deal {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-
-	
 
 	public int getCategoryID() {
 		return this.category.getCategory_id();
@@ -108,17 +110,17 @@ public class Deal {
 	public Deal() {
 
 	}
-	
 
-	public Deal(String link, String description, String name, String price, int score,String image, Category category) {
+	public Deal(String link, String description, String name, String price, int score, String image,
+			Category category) {
 
 		this.link = link;
 		this.description = description;
 		this.name = name;
 		this.price = price;
 		this.score = score;
-		this.category=category;
-		this.image=image;
+		this.category = category;
+		this.image = image;
 
 	}
 

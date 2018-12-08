@@ -18,7 +18,6 @@ public class DealService {
 	@Autowired
 	private CategoriesRepository categoriesRepository;
 
-	@CrossOrigin(origins = "http://localhost:4200")
 	public List<Deal> getAllDeals() {
 
 		List<Deal> deals = new ArrayList<>();
@@ -27,10 +26,9 @@ public class DealService {
 	}
 
 	public void addNewDeal(Deal deal) {
-		
+
 		deal.setCategory(categoriesRepository.findBycategoryID(deal.categoryID));
 		dealsRepository.save(deal);
-		
 
 	}
 }

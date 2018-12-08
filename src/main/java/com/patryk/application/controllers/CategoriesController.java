@@ -16,8 +16,7 @@ public class CategoriesController {
 	@Autowired
 	private CategoryService categoriesService;
 
-	@GetMapping("/categories")
-	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/categories")	
 	public List<Category> getAllCategories() {
 		return categoriesService.getAllCategories();
 
