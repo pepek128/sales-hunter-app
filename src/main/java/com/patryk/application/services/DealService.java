@@ -27,8 +27,18 @@ public class DealService {
 
 	public void addNewDeal(Deal deal) {
 
-		deal.setCategory(categoriesRepository.findBycategoryID(deal.categoryID));
+		deal.setCategory(categoriesRepository.findBycategoryID(deal.getCategoryID()));
 		dealsRepository.save(deal);
+
+	}
+
+	public Deal getDeal(Integer id) {
+		return dealsRepository.getOne(id);
+
+	}
+
+	public void updateScore(Deal deal) {
+		dealsRepository.save(deal); 
 
 	}
 }

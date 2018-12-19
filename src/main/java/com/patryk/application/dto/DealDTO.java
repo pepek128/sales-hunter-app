@@ -2,8 +2,11 @@ package com.patryk.application.dto;
 
 import javax.validation.constraints.NotNull;
 
+import com.patryk.application.models.Category;
+
 public class DealDTO {
 
+	private int dealID;
 	@NotNull
 	private String link;
 	@NotNull
@@ -13,8 +16,19 @@ public class DealDTO {
 	@NotNull
 	private String price;
 	private String image;
-	@NotNull
-	public int categoryID;
+	private int score; 
+
+	private int categoryID;
+
+	private Category category;
+
+	public int getDealID() {
+		return dealID;
+	}
+
+	public void setDealID(int dealID) {
+		this.dealID = dealID;
+	}
 
 	public int getCategoryID() {
 		return categoryID;
@@ -34,6 +48,14 @@ public class DealDTO {
 
 	public String getDescription() {
 		return description;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	public void setDescription(String description) {
@@ -64,4 +86,13 @@ public class DealDTO {
 		this.image = image;
 	}
 
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+	
+	
 }

@@ -26,16 +26,12 @@ public class Deal {
 	@NotNull
 	private String price;
 	private String image;
-	@Transient
-	public int categoryID;
-
-	public void setCategoryID(int categoryID) {
-		this.categoryID = categoryID;
-	}
-
+	private int score = 0;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "categoryID")
-	private Category category;
+	public Category category;
+	@Transient
+	private int categoryID;
 
 	public Category getCategory() {
 		return category;
@@ -46,16 +42,18 @@ public class Deal {
 	}
 
 	public int getCategoryID() {
-		return this.category.getCategory_id();
+		return categoryID;
 	}
 
-	private int score = 0;
+	public void setCategoryID(int categoryID) {
+		this.categoryID = categoryID;
+	}
 
-	public int getDeal_id() {
+	public int getDealID() {
 		return dealID;
 	}
 
-	public void setDeal_id(int deal_id) {
+	public void setDealID(int deal_id) {
 		this.dealID = deal_id;
 	}
 
