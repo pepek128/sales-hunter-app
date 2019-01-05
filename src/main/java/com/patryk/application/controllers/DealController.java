@@ -48,6 +48,7 @@ public class DealController {
 		dealService.addNewDeal(deal);
 
 	}
+
 	@PutMapping("/deals")
 	public void updateDealScore(@RequestBody DealDTO dealDTO) {
 
@@ -57,4 +58,34 @@ public class DealController {
 
 	}
 
+	@GetMapping("/search/desc/{text}")
+	public List<DealDTO> getDealsByDesc(@PathVariable String text) {
+		List<Deal> deals = dealService.getDealByDesc(text);
+		List<DealDTO> dealsDTO = new ArrayList<>();
+		for (Deal x : deals) {
+
+			dealsDTO.add(modelMapper.map(x, DealDTO.class));
+		}
+		return dealsDTO;
+	}
+	@GetMapping("/search/name/{name}")
+	public List<DealDTO> getDealsByName(@PathVariable String name) {
+		List<Deal> deals = dealService.getDealByDesc(name);
+		List<DealDTO> dealsDTO = new ArrayList<>();
+		for (Deal x : deals) {
+
+			dealsDTO.add(modelMapper.map(x, DealDTO.class));
+		}
+		return dealsDTO;
+	}
+	@GetMapping("/search/cat/{categoryID}")
+	public List<DealDTO> getDealsByCat(@PathVariable Integer categoryID) {
+		List<Deal> deals = dealService.getDealByCat(categoryID);
+		List<DealDTO> dealsDTO = new ArrayList<>();
+		for (Deal x : deals) {
+
+			dealsDTO.add(modelMapper.map(x, DealDTO.class));
+		}
+		return dealsDTO;
+	}
 }

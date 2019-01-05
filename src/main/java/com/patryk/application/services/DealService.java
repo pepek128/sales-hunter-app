@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
+import com.patryk.application.models.Category;
 import com.patryk.application.models.Deal;
 import com.patryk.application.repositories.CategoriesRepository;
 import com.patryk.application.repositories.DealsRepository;
@@ -38,7 +38,18 @@ public class DealService {
 	}
 
 	public void updateScore(Deal deal) {
-		dealsRepository.save(deal); 
+		dealsRepository.save(deal);
 
+	}
+
+	public List<Deal> getDealByDesc(String text) {
+		return dealsRepository.findByDescriptionContainingIgnoreCase(text);
+	}
+	public List<Deal> getDealByName(String name) {
+		return dealsRepository.findByNameContainingIgnoreCase(name);
+	}
+	public List<Deal> getDealByCat(Integer categoryID) {
+		
+		return dealsRepository.findByCategory(categoriesRepository.findById(categoryID));
 	}
 }
