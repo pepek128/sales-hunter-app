@@ -1,53 +1,47 @@
 package com.patryk.application.models;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NaturalId;
+ 
 @Entity
-@Table(name = "role")
+@Table(name = "roles")
 public class Role {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int roleID;
-	private String role_name;
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "role")
-	private User user;
-	
-	
-	public int getRole_id() {
-		return roleID;
-	}
-
-	public void setRole_id(int role_id) {
-		this.roleID = role_id;
-	}
-
-	public String getRole_name() {
-		return role_name;
-	}
-
-	public void setRole_name(String role_name) {
-		this.role_name = role_name;
-	}
-
-	public Role() {
-
-	}
-
-	public Role(String role_name) {
-		super();
-		this.role_name = role_name;
-	}
-
-	public void setUser(User user) {
-		this.user=user;
-		
-	}
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+ 
+    @Enumerated(EnumType.STRING)
+    @NaturalId
+    @Column(length = 60)
+    private RoleName name;
+ 
+    public Role() {}
+ 
+    public Role(RoleName name) {
+        this.name = name;
+    }
+ 
+    public Long getId() {
+        return id;
+    }
+ 
+    public void setId(Long id) {
+        this.id = id;
+    }
+ 
+    public RoleName getName() {
+        return name;
+    }
+ 
+    public void setName(RoleName name) {
+        this.name = name;
+    }
 }

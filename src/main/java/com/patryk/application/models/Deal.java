@@ -11,6 +11,8 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Length;
+
 @Entity
 @Table(name = "deal")
 public class Deal {
@@ -18,9 +20,12 @@ public class Deal {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int dealID;
 	@NotNull
+	@Length(max = 1000)
 	private String link;
 	@NotNull
+	@Length(max = 1000)
 	private String description;
+	@Length(max = 100)
 	@NotNull
 	private String name;
 	@NotNull
