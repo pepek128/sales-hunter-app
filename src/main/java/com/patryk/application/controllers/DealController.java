@@ -68,6 +68,7 @@ public class DealController {
 		}
 		return dealsDTO;
 	}
+
 	@GetMapping("/deals/search/name/{name}")
 	public List<DealDTO> getDealsByName(@PathVariable String name) {
 		List<Deal> deals = dealService.getDealByName(name);
@@ -78,6 +79,7 @@ public class DealController {
 		}
 		return dealsDTO;
 	}
+
 	@GetMapping("/deals/search/cat/{categoryID}")
 	public List<DealDTO> getDealsByCat(@PathVariable Integer categoryID) {
 		List<Deal> deals = dealService.getDealByCat(categoryID);

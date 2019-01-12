@@ -1,8 +1,12 @@
 package com.patryk.application.dto;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.validation.constraints.NotNull;
 
 import com.patryk.application.models.Category;
+import com.patryk.application.models.User;
 
 public class DealDTO {
 
@@ -16,11 +20,48 @@ public class DealDTO {
 	@NotNull
 	private String price;
 	private String image;
-	private int score; 
+	private int score;
 
 	private int categoryID;
+	private String username;
 
 	private Category category;
+	private User user;
+	private String voted;
+	private Set<User> votedusers = new HashSet<>();
+	private String voteType;
+
+	public String getvoteType() {
+		return voteType;
+	}
+
+	public void setvoteType(String voteType) {
+		this.voteType = voteType;
+	}
+
+	public String getVoted() {
+		return voted;
+	}
+
+	public void setVoted(String voted) {
+		this.voted = voted;
+	}
+
+	public Set<User> getVotedusers() {
+		return votedusers;
+	}
+
+	public void setVotedusers(Set<User> votedusers) {
+		this.votedusers = votedusers;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public int getDealID() {
 		return dealID;
@@ -93,6 +134,17 @@ public class DealDTO {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	
-	
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public DealDTO() {
+
+	}
+
 }

@@ -1,12 +1,20 @@
 package com.patryk.application.models;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
@@ -35,8 +43,66 @@ public class Deal {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "categoryID")
 	public Category category;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "userID")
+	public User user;
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "deals_users", joinColumns = @JoinColumn(name = "deal_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+	private Set<User> votedusers = new HashSet<>();
 	@Transient
 	private int categoryID;
+	@Transient
+	private String username;
+	@Transient
+	private String voted;
+	@Transient
+	private String voteType;
+	
+	
+	
+	
+	
+	
+
+	public String getvoteType() {
+		return voteType;
+	}
+
+	public void setvoteType(String voteType) {
+		this.voteType = voteType;
+	}
+
+	public String getVoted() {
+		return voted;
+	}
+
+	public void setVoted(String voted) {
+		this.voted = voted;
+	}
+
+	public Set<User> getVotedusers() {
+		return votedusers;
+	}
+
+	public void setVotedusers(Set<User> votedusers) {
+		this.votedusers = votedusers;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public Category getCategory() {
 		return category;
@@ -46,10 +112,12 @@ public class Deal {
 		this.category = category;
 	}
 
+	@Transient
 	public int getCategoryID() {
 		return categoryID;
 	}
 
+	@Transient
 	public void setCategoryID(int categoryID) {
 		this.categoryID = categoryID;
 	}
@@ -114,17 +182,20 @@ public class Deal {
 
 	}
 
-	public Deal(String link, String description, String name, String price, int score, String image,
-			Category category) {
-
+	public Deal(int dealID, @NotNull @Length(max = 1000) String link, @NotNull @Length(max = 1000) String description,
+			@Length(max = 100) @NotNull String name, @NotNull String price, String image, int score, Category category,
+			User user, int categoryID) {
+		super();
+		this.dealID = dealID;
 		this.link = link;
 		this.description = description;
 		this.name = name;
 		this.price = price;
+		this.image = image;
 		this.score = score;
 		this.category = category;
-		this.image = image;
-
+		this.user = user;
+		this.categoryID = categoryID;
 	}
 
 }
