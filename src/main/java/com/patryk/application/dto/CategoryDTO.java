@@ -1,4 +1,4 @@
-package com.patryk.application.models;
+package com.patryk.application.dto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,16 +10,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@Entity
-@Table(name = "category")
 
-public class Category {
-	@Id
+public class CategoryDTO {
+	
 	public int categoryID;
-	@NotNull
+	
 	private String categoryname;
-	@OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
-	private List<Deal> deals = new ArrayList<>();
+	
 
 	public int getCategoryID() {
 		return categoryID;

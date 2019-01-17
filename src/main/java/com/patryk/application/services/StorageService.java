@@ -44,6 +44,7 @@ public class StorageService {
  
 	public void deleteAll() {
 		FileSystemUtils.deleteRecursively(rootLocation.toFile());
+		
 	}
  
 	public void init() {
@@ -52,5 +53,9 @@ public class StorageService {
 		} catch (IOException e) {
 			throw new RuntimeException("Could not initialize storage!");
 		}
+	}
+	public void deleteFile(String filename) throws IOException {
+		Files.deleteIfExists(Paths.get("C:\\Users\\pepek128\\Documents\\GitHub\\sales-hunter-front\\src\\assets\\images\\"+filename)); 
+		
 	}
 }

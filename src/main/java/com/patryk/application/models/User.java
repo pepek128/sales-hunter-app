@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -27,6 +28,8 @@ import org.hibernate.annotations.NaturalId;
 @Table(name = "users", uniqueConstraints = { @UniqueConstraint(columnNames = { "username" }),
 		@UniqueConstraint(columnNames = { "email" }) })
 public class User {
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -55,23 +58,10 @@ public class User {
 
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	private List<Deal> deals = new ArrayList<>();
-	
-	@Transient
-	private String voteType;
+
+
 
 	
-	
-	
-	
-	
-	public String getvoteType() {
-		return voteType;
-	}
-
-	public void setvoteType(String voteType) {
-		this.voteType = voteType;
-	}
-
 	public User() {
 	}
 
@@ -81,8 +71,8 @@ public class User {
 		this.email = email;
 		this.password = password;
 	}
-
 	
+
 	public User(int id, @NotBlank @Size(min = 3, max = 50) String name,
 			@NotBlank @Size(min = 3, max = 50) String username, @NotBlank @Size(max = 50) @Email String email,
 			@NotBlank @Size(min = 6, max = 100) String password, Set<Role> roles, List<Deal> deals, String voteType) {
@@ -94,7 +84,7 @@ public class User {
 		this.password = password;
 		this.roles = roles;
 		this.deals = deals;
-		this.voteType = voteType;
+	
 	}
 
 	public int getId() {
@@ -144,4 +134,5 @@ public class User {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
+
 }

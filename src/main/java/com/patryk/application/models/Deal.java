@@ -1,8 +1,7 @@
 package com.patryk.application.models;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -14,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
@@ -24,6 +22,7 @@ import org.hibernate.validator.constraints.Length;
 @Entity
 @Table(name = "deal")
 public class Deal {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int dealID;
@@ -36,8 +35,9 @@ public class Deal {
 	@Length(max = 100)
 	@NotNull
 	private String name;
-	@NotNull
+	@Length(max = 15)
 	private String price;
+	@Length(max = 255)
 	private String image;
 	private int score = 0;
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -48,29 +48,13 @@ public class Deal {
 	public User user;
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "deals_users", joinColumns = @JoinColumn(name = "deal_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
-	private Set<User> votedusers = new HashSet<>();
+	private List<User> votedusers = new ArrayList<>();
 	@Transient
 	private int categoryID;
 	@Transient
 	private String username;
 	@Transient
 	private String voted;
-	@Transient
-	private String voteType;
-	
-	
-	
-	
-	
-	
-
-	public String getvoteType() {
-		return voteType;
-	}
-
-	public void setvoteType(String voteType) {
-		this.voteType = voteType;
-	}
 
 	public String getVoted() {
 		return voted;
@@ -80,11 +64,11 @@ public class Deal {
 		this.voted = voted;
 	}
 
-	public Set<User> getVotedusers() {
+	public List<User> getVotedusers() {
 		return votedusers;
 	}
 
-	public void setVotedusers(Set<User> votedusers) {
+	public void setVotedusers(List<User> votedusers) {
 		this.votedusers = votedusers;
 	}
 

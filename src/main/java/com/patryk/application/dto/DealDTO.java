@@ -1,14 +1,16 @@
 package com.patryk.application.dto;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
 import com.patryk.application.models.Category;
 import com.patryk.application.models.User;
 
+
 public class DealDTO {
+
 
 	private int dealID;
 	@NotNull
@@ -26,18 +28,12 @@ public class DealDTO {
 	private String username;
 
 	private Category category;
-	private User user;
+	private UserDTO userDTO;
 	private String voted;
-	private Set<User> votedusers = new HashSet<>();
-	private String voteType;
+	public List<UserDTO> votedDTO;	
+	
 
-	public String getvoteType() {
-		return voteType;
-	}
-
-	public void setvoteType(String voteType) {
-		this.voteType = voteType;
-	}
+	
 
 	public String getVoted() {
 		return voted;
@@ -47,20 +43,20 @@ public class DealDTO {
 		this.voted = voted;
 	}
 
-	public Set<User> getVotedusers() {
-		return votedusers;
+	public List<UserDTO> getVotedDTO() {
+		return votedDTO;
 	}
 
-	public void setVotedusers(Set<User> votedusers) {
-		this.votedusers = votedusers;
+	public void setVotedDTO(List<UserDTO> votedDTO) {
+		this.votedDTO = votedDTO;
 	}
 
-	public User getUser() {
-		return user;
+	public UserDTO getUserDTO() {
+		return userDTO;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserDTO(UserDTO userDTO) {
+		this.userDTO = userDTO;
 	}
 
 	public int getDealID() {
@@ -145,6 +141,25 @@ public class DealDTO {
 
 	public DealDTO() {
 
+	}
+
+	public DealDTO(int dealID, @NotNull String link, @NotNull String description, @NotNull String name,
+			@NotNull String price, String image, int score, int categoryID, String username, Category category,
+			UserDTO userDTO, String voted, List<UserDTO> votedDTO) {
+		super();
+		this.dealID = dealID;
+		this.link = link;
+		this.description = description;
+		this.name = name;
+		this.price = price;
+		this.image = image;
+		this.score = score;
+		this.categoryID = categoryID;
+		this.username = username;
+		this.category = category;
+		this.userDTO = userDTO;
+		this.voted = voted;
+		this.votedDTO = votedDTO;
 	}
 
 }
