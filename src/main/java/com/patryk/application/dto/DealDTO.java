@@ -1,12 +1,10 @@
 package com.patryk.application.dto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
 import com.patryk.application.models.Category;
-import com.patryk.application.models.User;
 
 
 public class DealDTO {

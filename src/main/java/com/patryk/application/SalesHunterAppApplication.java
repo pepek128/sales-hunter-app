@@ -16,7 +16,7 @@ public class SalesHunterAppApplication {
 		SpringApplication.run(SalesHunterAppApplication.class, args);
 	}
 	public void run(String... arg) throws Exception {
-		storageService.deleteAll();
+		
 		storageService.init();
 	}
 }

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.patryk.application.dto.CategoryDTO;
-import com.patryk.application.dto.DealDTO;
 import com.patryk.application.models.Category;
 import com.patryk.application.services.CategoryService;
 

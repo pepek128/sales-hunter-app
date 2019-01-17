@@ -1,9 +1,7 @@
 package com.patryk.application.services;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -93,7 +91,7 @@ public class DealService {
 		for (Deal x : votedDeals) {
 
 			if (categories.contains(x.category.getCategory_name())) {
-				int pom = 0;
+				
 				i = categories.indexOf(x.category.getCategory_name());
 				categories.add(x.category.getCategory_name());
 				categories.remove(i);
@@ -101,14 +99,14 @@ public class DealService {
 			} else {
 				categories.add(x.category.getCategory_name());
 			}
-			System.out.println("Deal który zvotował " + x.getName());
-			System.out.println("Kategoria zwotowanego deala " + x.category.getCategory_name());
+			//System.out.println("Deal który zvotował " + x.getName());
+			//System.out.println("Kategoria zwotowanego deala " + x.category.getCategory_name());
 
 			ids.add(x.getDealID());
 		}
 		i = 0;
 		categories = getNewest(categories);
-		for (String x : categories) {			
+		for (String x : categories) {
 			reccDeals.addAll(dealsRepository.findFirst2ByDealIDNotInAndCategory_categorynameOrderByDealIDDesc(ids, x));
 
 		}
